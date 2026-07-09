@@ -17,6 +17,8 @@ async function initializeDashboard() {
     // Update Total Device Card
     document.getElementById("totalDevices").textContent = devices.length;
 
+    renderVehicleTable(devices);
+
     console.table(
         devices.map(d => ({
             id: d.id,
