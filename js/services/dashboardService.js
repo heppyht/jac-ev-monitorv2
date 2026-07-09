@@ -14,14 +14,16 @@ async function initializeDashboard() {
 
     const devices = await getDevices();
 
-    const diagnostics = await getDiagnostics();
+    // Update Total Device Card
+    document.getElementById("totalDevices").textContent = devices.length;
 
-    const status = await getStatusData();
-
-    console.log("Devices :", devices.length);
-
-    console.log("Diagnostics :", diagnostics.length);
-
-    console.log("Status :", status.length);
+    console.table(
+        devices.map(d => ({
+            id: d.id,
+            name: d.name,
+            serial: d.serialNumber,
+            vehicle: d.vehicleIdentificationNumber
+        }))
+    );
 
 }
