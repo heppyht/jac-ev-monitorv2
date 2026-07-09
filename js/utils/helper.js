@@ -1,13 +1,21 @@
 "use strict";
 
-function showLoading(state) {
+function showLoading(show) {
 
-    console.log("Loading :", state);
+    const loading = document.getElementById("loading");
 
-}
+    if (!loading) return;
 
-function sleep(ms) {
+    if (show) {
 
-    return new Promise(resolve => setTimeout(resolve, ms));
+        loading.classList.remove("hidden");
+
+    }
+
+    else {
+
+        loading.classList.add("hidden");
+
+    }
 
 }
