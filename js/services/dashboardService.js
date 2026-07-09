@@ -1,5 +1,3 @@
-"use strict";
-
 async function initializeDashboard() {
 
     console.log("Initializing Dashboard...");
@@ -14,6 +12,18 @@ async function initializeDashboard() {
 
     const devices = await getDevices();
 
-    console.log(devices);
+    console.table(devices.map(d => ({
+
+        id: d.id,
+
+        name: d.name,
+
+        serial: d.serialNumber,
+
+        vehicle: d.vehicleIdentificationNumber,
+
+        groups: d.groups
+
+    })));
 
 }
