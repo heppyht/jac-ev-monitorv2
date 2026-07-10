@@ -1,25 +1,27 @@
 "use strict";
 
+let diagnosticCache = null;
+
 async function getDiagnostics() {
+
+    if (diagnosticCache)
+        return diagnosticCache;
 
     try {
 
-        const diagnostics = await apiCall("Get", {
+        diagnosticCache = await apiCall("Get", {
 
             typeName: "Diagnostic",
 
-            search: {},
-
-            resultsLimit: 5000
+            search: {}
 
         });
 
-        console.log("Diagnostics :", diagnostics.length);
+        console.log("Diagnostics :", diagnosticCache.length);
 
-        return diagnostics;
+        return diagnosticCache;
 
     }
-
     catch (e) {
 
         console.error(e);
