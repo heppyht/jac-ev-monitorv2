@@ -15,7 +15,7 @@ function renderVehicleTable(vehicles) {
 
                 <td>${v.name}</td>
 
-                <td>${v.serial}</td>
+                <td>${v.serialNumber}</td>
 
                 <td>-</td>
 
