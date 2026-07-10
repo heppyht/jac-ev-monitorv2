@@ -6,30 +6,24 @@ async function loadEVData() {
 
     const diagnostics = await getDiagnostics();
 
-    console.log("Devices :", devices.length);
+    const firstDevice = devices[0];
 
-    console.log("Diagnostics :", diagnostics.length);
+    const status = await getLatestStatusData(firstDevice.id);
 
-    const vehicles = [];
+    console.table(
 
-    for (const device of devices) {
+        status.map(s => ({
 
-        const status = await getLatestStatusData(device.id);
+            diagnostic: getDiagnosticName(s.diagnostic.id, diagnostics),
 
-        vehicles.push({
+            value: s.data,
 
-            id: device.id,
+            time: s.dateTime
 
-            name: device.name,
+        }))
 
-            serial: device.serialNumber,
+    );
 
-            status
-
-        });
-
-    }
-
-    return vehicles;
+    return devices;
 
 }

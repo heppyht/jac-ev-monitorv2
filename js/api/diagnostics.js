@@ -1,10 +1,10 @@
 "use strict";
 
-let diagnosticCache = null;
+let diagnosticCache = [];
 
 async function getDiagnostics() {
 
-    if (diagnosticCache)
+    if (diagnosticCache.length > 0)
         return diagnosticCache;
 
     try {
@@ -17,7 +17,21 @@ async function getDiagnostics() {
 
         });
 
-        console.log("Diagnostics :", diagnosticCache.length);
+        console.log("Diagnostics Loaded :", diagnosticCache.length);
+
+        console.table(
+
+            diagnosticCache.map(d => ({
+
+                id: d.id,
+
+                name: d.name,
+
+                unit: d.unitOfMeasure
+
+            }))
+
+        );
 
         return diagnosticCache;
 
