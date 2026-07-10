@@ -1,33 +1,32 @@
 "use strict";
 
-/*
-=========================================
-JAC EV Monitor
-Geotab API Wrapper
-=========================================
-*/
-
-async function apiCall(method, params) {
+function apiCall(method, params) {
 
     return new Promise((resolve, reject) => {
 
-        if (!api) {
-
-            reject("Geotab API is not initialized.");
-
-            return;
-        }
+        console.log("========== API CALL ==========");
+        console.log("Method :", method);
+        console.log("Params :", params);
 
         api.call(
-
             method,
-
             params,
+            function (result) {
 
-            resolve,
+                console.log("API SUCCESS");
+                console.log(result);
 
-            reject
+                resolve(result);
 
+            },
+            function (error) {
+
+                console.error("API ERROR");
+                console.error(error);
+
+                reject(error);
+
+            }
         );
 
     });
