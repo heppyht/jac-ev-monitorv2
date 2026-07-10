@@ -12,10 +12,20 @@ async function initializeDashboard() {
 
     }
 
-    const vehicles = await loadEVData();
+    const devices = await getDevices();
 
-    document.getElementById("totalDevices").textContent = vehicles.length;
+    // Update Total Device Card
+    document.getElementById("totalDevices").textContent = devices.length;
 
-    renderVehicleTable(vehicles);
+    renderVehicleTable(devices);
+
+    console.table(
+        devices.map(d => ({
+            id: d.id,
+            name: d.name,
+            serial: d.serialNumber,
+            vehicle: d.vehicleIdentificationNumber
+        }))
+    );
 
 }

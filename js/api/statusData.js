@@ -1,30 +1,25 @@
 "use strict";
 
-async function getLatestStatusData(deviceId) {
+async function getStatusData() {
 
     try {
 
-        const data = await apiCall("Get", {
+        const status = await apiCall("Get", {
 
             typeName: "StatusData",
 
-            search: {
+            search: {},
 
-                deviceSearch: {
-
-                    id: deviceId
-
-                }
-
-            },
-
-            resultsLimit: 500
+            resultsLimit: 5000
 
         });
 
-        return data;
+        console.log("StatusData :", status.length);
+
+        return status;
 
     }
+
     catch (e) {
 
         console.error(e);

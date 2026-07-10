@@ -1,41 +1,25 @@
 "use strict";
 
-let diagnosticCache = [];
-
 async function getDiagnostics() {
-
-    if (diagnosticCache.length > 0)
-        return diagnosticCache;
 
     try {
 
-        diagnosticCache = await apiCall("Get", {
+        const diagnostics = await apiCall("Get", {
 
             typeName: "Diagnostic",
 
-            search: {}
+            search: {},
+
+            resultsLimit: 5000
 
         });
 
-        console.log("Diagnostics Loaded :", diagnosticCache.length);
+        console.log("Diagnostics :", diagnostics.length);
 
-        console.table(
-
-            diagnosticCache.map(d => ({
-
-                id: d.id,
-
-                name: d.name,
-
-                unit: d.unitOfMeasure
-
-            }))
-
-        );
-
-        return diagnosticCache;
+        return diagnostics;
 
     }
+
     catch (e) {
 
         console.error(e);

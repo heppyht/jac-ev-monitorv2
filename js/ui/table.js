@@ -1,40 +1,27 @@
 "use strict";
 
-function renderVehicleTable(vehicles) {
+function renderVehicleTable(devices) {
 
     const tbody = document.getElementById("vehicleBody");
 
     tbody.innerHTML = "";
 
-    vehicles.forEach((v, i) => {
+    devices.forEach((device, index) => {
 
         tbody.innerHTML += `
             <tr>
-
-                <td>${i + 1}</td>
-
-                <td>${v.name}</td>
-
-                <td>${v.serial}</td>
-
+                <td>${index + 1}</td>
+                <td>${device.name}</td>
+                <td>${device.serialNumber}</td>
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
                 <td>-</td>
-
             </tr>
         `;
 
