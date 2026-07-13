@@ -1,13 +1,13 @@
 {
-    "name": "jac_ev_monitor",
+    "name": "JAC MonitorV2",
     "supportEmail": "heppy@opexcg.com",
     "version": "1.0.0",
     "items": [
         {
-            "url": "https://heppyht.github.io/jac-ev-monitor/index.html",
+            "url": "https://heppyht.github.io/jac-monitor/index.html",
             "path": "EngineMaintenanceLink/",
             "menuName": {
-                "en": "JAC EV Monitor"
+                "en": "JAC MonitorV2"
             }
         }
     ],
